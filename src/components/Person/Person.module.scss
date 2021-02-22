@@ -1,0 +1,15 @@
+.person {
+  display: flex;
+  width: 500px;
+  margin: 20px auto;
+  .content {
+    padding: 5px 20px;
+    width: 50%;
+    div {
+      margin: 10px;
+    }
+  }
+  img {
+    width: 50%;
+  }
+}
