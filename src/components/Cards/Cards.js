@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../store/persons/personsActions';
-import styles from './Cards.module.scss';
-import Card from '../Card/Card';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import * as actions from "../../store/persons/personsActions";
+import styles from "./Cards.module.scss";
+import Card from "../Card/Card";
 
 const Cards = ({ persons, setPersons, next }) => {
   useEffect(() => {
@@ -10,18 +10,25 @@ const Cards = ({ persons, setPersons, next }) => {
   }, []);
 
   const handleScroll = (e) => {
+    console.log(
+      e.target.documentElement.scrollHeight -
+        e.target.documentElement.clientHeight,
+      window.scrollY
+    );
     if (
-      Math.round(e.target.documentElement.scrollHeight - e.target.documentElement.clientHeight) ==
-      Math.round(window.scrollY)
+      e.target.documentElement.scrollHeight -
+        e.target.documentElement.clientHeight -
+        window.scrollY <
+      250
     ) {
-      setPersons(next);
+      if (next) setPersons(next);
     }
   };
 
   useEffect(() => {
-    document.addEventListener('scroll', handleScroll);
+    document.addEventListener("scroll", handleScroll);
     return () => {
-      document.removeEventListener('scroll', handleScroll);
+      document.removeEventListener("scroll", handleScroll);
     };
   }, [next]);
 
