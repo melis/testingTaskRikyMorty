@@ -8,7 +8,7 @@ const Error = ({ info }) => {
     <div className={styles.notfound}>
       <Result
         status="404"
-        title="404"
+        title="Some sing is wrong!"
         subTitle={info || "Some sing is wrong!"}
         extra={<Link to="/">Home</Link>}
       />

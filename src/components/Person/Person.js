@@ -3,6 +3,7 @@ import styles from "./Person.module.scss";
 import * as actions from "../../store/person/personActions";
 import { connect } from "react-redux";
 import Error from "../Error/Error";
+import { Link } from "react-router-dom";
 
 const Person = (props) => {
   const { setPerson, person, loadPerson, error } = props;
@@ -15,7 +16,8 @@ const Person = (props) => {
   if (error) return <Error info={error} />;
 
   return (
-    <div>
+    <div className={styles.container}>
+      <Link to="/">Home</Link>
       {person ? (
         <div className={styles.person}>
           <img src={person.image} />
