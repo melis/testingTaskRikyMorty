@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
-import styles from './Person.module.scss';
-import * as actions from '../../store/person/personActions';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import styles from "./Person.module.scss";
+import * as actions from "../../store/person/personActions";
+import { connect } from "react-redux";
 
 const Person = (props) => {
-  const { setPerson, person } = props;
+  const { setPerson, person, loadPerson } = props;
   const { personId } = props.match.params;
   useEffect(() => {
-    setPerson(personId);
+    // setPerson(personId);
+    loadPerson(personId);
   }, []);
 
   return (

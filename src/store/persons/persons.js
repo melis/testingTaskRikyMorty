@@ -7,7 +7,7 @@ const initialState = {
 
 const persons = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_PERSONS':
+    case "SET_PERSONS":
       return {
         ...state,
         persons: [...state.persons, ...action.persons],
@@ -16,9 +16,10 @@ const persons = (state = initialState, action) => {
         next: action.next,
         prev: action.prev,
       };
-    case 'SET_LOADING':
+
+    case "SET_LOADING":
       return { ...state, loading: action.loading };
-    case 'SET_ERROR':
+    case "SET_ERROR":
       return { ...state, error: action.error, loading: false };
     default:
       return state;

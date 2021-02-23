@@ -4,9 +4,12 @@ import * as actions from "../../store/persons/personsActions";
 import styles from "./Cards.module.scss";
 import Card from "../Card/Card";
 
-const Cards = ({ persons, setPersons, next }) => {
+const Cards = ({ persons, setPersons, next, loadPersons }) => {
   useEffect(() => {
-    if (!persons.length) setPersons();
+    if (!persons.length) {
+      // setPersons();
+      loadPersons();
+    }
   }, []);
 
   const handleScroll = (e) => {
