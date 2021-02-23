@@ -10,18 +10,14 @@ const Cards = ({ persons, setPersons, next }) => {
   }, []);
 
   const handleScroll = (e) => {
-    console.log(
-      e.target.documentElement.scrollHeight -
-        e.target.documentElement.clientHeight,
-      window.scrollY
-    );
     if (
-      e.target.documentElement.scrollHeight -
-        e.target.documentElement.clientHeight -
-        window.scrollY <
-      250
+      Math.round(
+        e.target.documentElement.scrollHeight -
+          e.target.documentElement.clientHeight
+      ) == Math.round(window.scrollY) &&
+      next
     ) {
-      if (next) setPersons(next);
+      setPersons(next);
     }
   };
 
