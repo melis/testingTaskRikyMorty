@@ -20,7 +20,8 @@ const Cards = ({ persons, setPersons, next, loadPersons }) => {
       ) == Math.round(window.scrollY) &&
       next
     ) {
-      setPersons(next);
+      loadPersons(next);
+      // setPersons(next);
     }
   };
 
