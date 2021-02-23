@@ -4,9 +4,10 @@ import blogApi from "../../api/api";
 function* workerLoadPerson(a) {
   try {
     const data = yield blogApi.getPerson(a.id);
+    if (data.error) throw new Error(data.error);
     yield put({ type: "SET_PERSON", person: data });
   } catch (e) {
-    yield put({ type: "SET_ERROR", error: e.info });
+    yield put({ type: "SET_ERROR", error: e.message });
   }
 }
 export function* watchLoadPerson() {

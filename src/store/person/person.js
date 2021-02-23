@@ -8,6 +8,7 @@ const person = (state = initialState, action) => {
       return {
         ...state,
         person: action.person,
+        error: null,
       };
     case "SET_LOADING":
       return { ...state, loading: action.loading };

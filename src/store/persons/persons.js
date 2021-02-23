@@ -3,6 +3,7 @@ const initialState = {
   loading: true,
   next: null,
   prev: null,
+  error: null,
 };
 
 const persons = (state = initialState, action) => {

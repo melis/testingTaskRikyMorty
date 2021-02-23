@@ -2,14 +2,17 @@ import React, { useEffect } from "react";
 import styles from "./Person.module.scss";
 import * as actions from "../../store/person/personActions";
 import { connect } from "react-redux";
+import Error from "../Error/Error";
 
 const Person = (props) => {
-  const { setPerson, person, loadPerson } = props;
+  const { setPerson, person, loadPerson, error } = props;
   const { personId } = props.match.params;
   useEffect(() => {
     // setPerson(personId);
     loadPerson(personId);
   }, []);
+
+  if (error) return <Error info={error} />;
 
   return (
     <div>
@@ -34,6 +37,7 @@ const Person = (props) => {
 const mapStateToProps = (state) => {
   return {
     person: state.person.person,
+    error: state.person.error,
   };
 };
 export default connect(mapStateToProps, actions)(Person);
