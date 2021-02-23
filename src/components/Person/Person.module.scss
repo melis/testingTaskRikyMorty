@@ -12,4 +12,12 @@
   img {
     width: 50%;
   }
+  @media (max-width: 500px) {
+    display: block;
+    max-width: 320px;
+    .content,
+    img {
+      width: 100%;
+    }
+  }
 }

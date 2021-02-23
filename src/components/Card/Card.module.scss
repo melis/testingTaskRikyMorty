@@ -15,4 +15,13 @@
       cursor: pointer;
     }
   }
+  @media (max-width: 500px) {
+    max-width: 320px;
+    .content {
+      padding: 5px;
+    }
+    h3 {
+      margin: 0;
+    }
+  }
 }
