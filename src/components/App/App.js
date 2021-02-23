@@ -9,7 +9,6 @@ import {
 import Cards from "../Cards/Cards";
 import Person from "../Person/Person";
 import { Result } from "antd";
-import styles from "./App.module.scss";
 import Error from "../Error/Error";
 
 const App = () => {
