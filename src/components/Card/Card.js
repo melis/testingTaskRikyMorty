@@ -8,10 +8,7 @@ const Card = ({ person }) => {
       <img src={person.image} />
       <div className={styles.content}>
         <h3>
-          Name:{" "}
-          <span>
-            <Link to={`/${person.id}`}>{person.name}</Link>
-          </span>
+        <Link to={`/${person.id}`}>{person.name}</Link>
         </h3>
         {/* <div>Status: {person.status}</div>
         <div>Species: {person.species}</div> */}
