@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Card.module.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Card.module.scss";
 
 const Card = ({ person }) => {
   return (
@@ -8,13 +8,13 @@ const Card = ({ person }) => {
       <img src={person.image} />
       <div className={styles.content}>
         <h3>
-          Name:{' '}
+          Name:{" "}
           <span>
             <Link to={`/${person.id}`}>{person.name}</Link>
           </span>
         </h3>
-        <div>Status: {person.status}</div>
-        <div>Species: {person.species}</div>
+        {/* <div>Status: {person.status}</div>
+        <div>Species: {person.species}</div> */}
         <div>Gender: {person.gender}</div>
       </div>
     </div>

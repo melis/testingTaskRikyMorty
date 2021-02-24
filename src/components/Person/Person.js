@@ -4,6 +4,8 @@ import * as actions from "../../store/person/personActions";
 import { connect } from "react-redux";
 import Error from "../Error/Error";
 import { Link } from "react-router-dom";
+import { Card } from "antd";
+import Spinner from "../Spinner/Spinner";
 
 const Person = (props) => {
   const { setPerson, person, loadPerson, error } = props;
@@ -17,20 +19,32 @@ const Person = (props) => {
 
   return (
     <div className={styles.container}>
-      <Link to="/">Home</Link>
+      <Link to="/">home</Link>
       {person ? (
         <div className={styles.person}>
+          <h2>{person.name}</h2>
           <img src={person.image} />
           <div className={styles.content}>
-            <div>Name: {person.name}</div>
-            <div>Status: {person.status}</div>
-            <div>Gender: {person.gender}</div>
-            <div>Location: {person.location.name}</div>
-            <div>Species: {person.species}</div>
+            <div>
+              <span>Status:</span>
+              <span className={styles.tt}>{person.status}</span>
+            </div>
+            <div>
+              <span>Gender:Gender:</span>
+              <span className={styles.tt}>{person.gender}</span>
+            </div>
+            <div>
+              <span>Origin:</span>
+              <span className={styles.tt}>{person.origin.name}</span>
+            </div>
+            <div>
+              <span>Species:</span>
+              <span className={styles.tt}>{person.species}</span>
+            </div>
           </div>
         </div>
       ) : (
-        <div className={styles.person}>loading...</div>
+        <Spinner />
       )}
     </div>
   );

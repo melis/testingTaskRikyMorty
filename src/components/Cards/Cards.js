@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/persons/personsActions";
 import styles from "./Cards.module.scss";
 import Card from "../Card/Card";
+import Spinner from "../Spinner/Spinner";
 
 const Cards = ({ persons, setPersons, next, loadPersons }) => {
   useEffect(() => {
@@ -32,6 +33,10 @@ const Cards = ({ persons, setPersons, next, loadPersons }) => {
     };
   }, [next]);
 
+  if (!persons.length) {
+    console.log("dsda");
+    return <Spinner />;
+  }
   return (
     <div className={styles.app}>
       {persons.map((p) => {
