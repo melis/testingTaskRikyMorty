@@ -30,7 +30,7 @@ const Person = (props) => {
               <span className={styles.tt}>{person.status}</span>
             </div>
             <div>
-              <span>Gender:Gender:</span>
+              <span>Gender:</span>
               <span className={styles.tt}>{person.gender}</span>
             </div>
             <div>
