@@ -33,10 +33,8 @@ const Cards = ({ persons, setPersons, next, loadPersons }) => {
     };
   }, [next]);
 
-  if (!persons.length) {
-    console.log("dsda");
-    return <Spinner />;
-  }
+  if (!persons.length)  return <Spinner />;
+  
   return (
     <div className={styles.app}>
       {persons.map((p) => {
