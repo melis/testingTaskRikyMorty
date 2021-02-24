@@ -12,7 +12,7 @@ const Card = ({ person }) => {
         </h3>
         {/* <div>Status: {person.status}</div>
         <div>Species: {person.species}</div> */}
-        <div>Gender: {person.gender}</div>
+        
       </div>
     </div>
   );
