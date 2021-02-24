@@ -4,18 +4,13 @@ import styles from "./Card.module.scss";
 
 const Card = ({ person }) => {
   return (
-    <div className={styles.card}>
+    <Link to={`/${person.id}`} className={styles.card}>
       <img src={person.image} />
-      <div className={styles.content}>
-        <h3>
-        <Link to={`/${person.id}`}>{person.name}</Link>
-        </h3>
-        {/* <div>Status: {person.status}</div>
-        <div>Species: {person.species}</div> */}
-        
-      </div>
-    </div>
+      <div>{person.name}</div>
+    </Link>
   );
 };
 
 export default Card;
+{
+}

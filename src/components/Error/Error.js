@@ -9,7 +9,7 @@ const Error = ({ info }) => {
       <Result
         status="404"
         title={info}
-        subTitle = "Some sing is wrong!"
+        subTitle="Some sing is wrong!"
         extra={<Link to="/">Home</Link>}
       />
     </div>
