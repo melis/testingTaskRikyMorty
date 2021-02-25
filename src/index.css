@@ -18,6 +18,7 @@ code {
   height: 100vh;
   background-image: url("./img/3.png");
   background-repeat: no-repeat;
+  background-size: cover;
   position: fixed;
   z-index: -100;
 }
