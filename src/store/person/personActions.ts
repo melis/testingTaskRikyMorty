@@ -1,6 +1,9 @@
 // import blogApi from "../../api/api";
-
-export const loadPerson = (id) => {
+export type loadPersonType = {
+  type: "LOAD_PERSON";
+  id: number;
+};
+export const loadPerson = (id: number): loadPersonType => {
   return { type: "LOAD_PERSON", id };
 };
 

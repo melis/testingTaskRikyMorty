@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from "redux";
-import { watchLoadPerson, watchLoadPersons } from "./saga/saga";
+import { watchLoadPerson, watchLoadPersons } from "./saga/saga.ts";
 
 import reduxThunk from "redux-thunk";
-import rootReduser from "./rootReduser";
+import rootReduser from "./rootReduser.ts";
 import createSaga from "redux-saga";
 
 const saga = createSaga();

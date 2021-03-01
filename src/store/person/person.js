@@ -1,5 +1,7 @@
 const initialState = {
   person: null,
+  loading: true,
+  error: null,
 };
 
 const person = (state = initialState, action) => {
@@ -8,6 +10,7 @@ const person = (state = initialState, action) => {
       return {
         ...state,
         person: action.person,
+        loading: false,
         error: null,
       };
     case "SET_LOADING":

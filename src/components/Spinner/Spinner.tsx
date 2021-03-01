@@ -1,8 +1,8 @@
 import { Spin } from "antd";
-import React from "react";
+import React, { FC } from "react";
 import style from "./Spinner.module.scss";
 
-const Spinner = () => {
+const Spinner: FC = () => {
   return (
     <div className={style.example}>
       <Spin />
