@@ -13,15 +13,13 @@ type dataPersonsType = {
   };
   results: Array<personType>;
 };
-type ErrorType = {
-  error?: string;
-};
 
 function* workerLoadPerson(a: loadPersonType) {
   try {
     yield put({ type: "SET_LOADING", loading: true });
-    const data: personType & ErrorType = yield blogApi.getPerson(a.id);
-    console.log(data);
+    const data: personType & {
+      error?: string;
+    } = yield blogApi.getPerson(a.id);
     if (data.error) {
       throw new Error(data.error);
     }

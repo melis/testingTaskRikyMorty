@@ -44,7 +44,7 @@ const Cards: FC<Props> = (props) => {
 
   return (
     <div className={styles.app}>
-      {persons.map((p: any) => {
+      {persons.map((p) => {
         return <Card person={p} key={p.id} />;
       })}
     </div>
