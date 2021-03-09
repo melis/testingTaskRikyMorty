@@ -1,22 +1,33 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./Person.module.scss";
-import * as actions from "../../store/person/personActions.ts";
+import * as actions from "../../store/person/personActions";
 import { connect } from "react-redux";
 import Error from "../Error/Error";
 import { Link } from "react-router-dom";
-import { Card } from "antd";
-import Spinner from "../Spinner/Spinner.tsx";
+import Spinner from "../Spinner/Spinner";
+import { PersonsStateType } from "../../store/persons/persons";
+import { PersonStateType, personType } from "../../store/person/person";
+import { RouteComponentProps } from "react-router";
 
-const Person = (props) => {
-  const { setPerson, person, loadPerson, error, loading } = props;
+type PathParamsType = {
+  personId: string;
+};
+
+type PropsType = {
+  error: null | string;
+  loadPerson: (id: number) => void;
+  loading: boolean | null;
+  person: personType | null;
+};
+const Person: FC<RouteComponentProps<PathParamsType> & PropsType> = (props) => {
+  const { person, loadPerson, error, loading } = props;
   const { personId } = props.match.params;
   useEffect(() => {
-    // setPerson(personId);
-    loadPerson(personId);
+    loadPerson(Number(personId));
   }, []);
 
   if (error) return <Error info={error} />;
-  if (loading) return <Spinner />;
+  if (loading || !person) return <Spinner />;
 
   return (
     <div className={styles.container}>
@@ -48,11 +59,16 @@ const Person = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+type stateType = {
+  person: PersonStateType;
+  persons: PersonsStateType;
+};
+const mapStateToProps = (state: stateType) => {
+  const { person } = state;
   return {
-    person: state.person.person,
-    error: state.person.error,
-    loading: state.person.loading,
+    person: person.person,
+    error: person.error,
+    loading: person.loading,
   };
 };
 export default connect(mapStateToProps, actions)(Person);

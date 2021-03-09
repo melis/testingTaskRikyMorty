@@ -1,7 +1,14 @@
-import blogApi from "../../api/api";
+import { type } from "os";
 
-export const loadPersons = (next) => {
-  return { type: "LOAD_PERSONS", next };
+// import blogApi from "../../api/api";
+
+export type loadPersonsType = {
+  type: "LOAD_PERSONS";
+  next: string | null;
+};
+
+export const loadPersons = (next: string | null): loadPersonsType => {
+  return { type: "LOAD_PERSONS", next: next ? next : "" };
 };
 
 // export const setPersons = (next) => {

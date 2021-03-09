@@ -26,3 +26,18 @@ const App = () => {
 };
 
 export default App;
+
+// начальное состояние
+const initialState = { width: 30 };
+
+// редуктор
+const reducer = (state, action) => {
+  switch (action) {
+    case "plus":
+      return { width: Math.min(state.width + 30, 600) };
+    case "minus":
+      return { width: Math.max(state.width - 30, 30) };
+    default:
+      throw new Error("Что происходит?");
+  }
+};

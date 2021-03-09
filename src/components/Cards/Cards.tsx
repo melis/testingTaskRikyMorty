@@ -1,19 +1,27 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/persons/personsActions";
 import styles from "./Cards.module.scss";
 import Card from "../Card/Card";
 import Spinner from "../Spinner/Spinner";
+import { PersonsStateType } from "../../store/persons/persons";
+import { PersonStateType, personType } from "../../store/person/person";
 
-const Cards = ({ persons, setPersons, next, loadPersons }) => {
+type Props = {
+  persons: personType[];
+  next: string | null;
+  loadPersons: (next: string | null) => actions.loadPersonsType;
+};
+const Cards: FC<Props> = (props) => {
+  const { persons, next, loadPersons } = props;
+
   useEffect(() => {
     if (!persons.length) {
-      // setPersons();
-      loadPersons();
+      loadPersons(next);
     }
   }, []);
 
-  const handleScroll = (e) => {
+  const handleScroll = (e: any) => {
     if (
       Math.round(
         e.target.documentElement.scrollHeight -
@@ -22,7 +30,6 @@ const Cards = ({ persons, setPersons, next, loadPersons }) => {
       next
     ) {
       loadPersons(next);
-      // setPersons(next);
     }
   };
 
@@ -33,21 +40,28 @@ const Cards = ({ persons, setPersons, next, loadPersons }) => {
     };
   }, [next]);
 
-  if (!persons.length)  return <Spinner />;
-  
+  if (!persons.length) return <Spinner />;
+
   return (
     <div className={styles.app}>
-      {persons.map((p) => {
+      {persons.map((p: any) => {
         return <Card person={p} key={p.id} />;
       })}
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
+type stateType = {
+  person: PersonStateType;
+  persons: PersonsStateType;
+};
+const mapStateToProps = (
+  state: stateType
+): { persons: personType[] | []; next: string | null } => {
+  const { persons } = state;
   return {
-    persons: state.persons.persons,
-    next: state.persons.next,
+    persons: persons.persons,
+    next: persons.next,
   };
 };
 
